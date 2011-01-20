@@ -1,0 +1,26 @@
+ _____  ___    ___    _  _                                                 
+(  _  )(  _`\ (  _`\ (_)(_)                            _                   
+| (_) || (_(_)| ( (_)| || |   _ _  _   _    _ _  _ __ (_) _   _   ___ ___  
+|  _  |`\__ \ | |  _ | || | /'_` )( ) ( ) /'_` )( '__)| |( ) ( )/' _ ` _ `\
+| | | |( )_) || (_( )| || |( (_) || (_) |( (_| || |   | || (_) || ( ) ( ) |
+(_) (_)`\____)(____/'(_)(_)`\__, |`\___/'`\__,_)(_)   (_)`\___/'(_) (_) (_)
+                               | |                                         
+                               (_)                                         
+
+  Java applet version of Kirk Baucom's ASCIIQuarium with ASCII-art by Joan
+  Stark. Java port from the Android ASCIIQuarium live wallpaper written by
+  Claudio Matsuoka.
+
+  Get the original ASCIIQuarium from
+  http://www.robobunny.com/projects/asciiquarium/html/
+
+                                     O
+                   __
+                 \/ o\                 o
+                 /\__/
+                                      .
+                                  \               ,\           
+                              \ /--\            >=('>
+                              >=  (o>             '/
+                              / \__/
+                                  /
