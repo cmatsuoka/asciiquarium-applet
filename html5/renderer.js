@@ -4,13 +4,13 @@ function Renderer(container, rows, columns)
 
 	this.putChar = function(column, row, c, color) {
 		var colors = [
-			"#7f0000",,	// r
-			"#007f00",,	// g
-			"#7f7f00",,	// y
-			"#00007f",,	// b
-			"#7f007f",,	// m
-			"#007f7f",,	// c
-			"#7f7f7f",,	// w
+			"#9f0000",,	// r
+			"#009f00",,	// g
+			"#9f9f00",,	// y
+			"#00009f",,	// b
+			"#9f009f",,	// m
+			"#009f9f",,	// c
+			"#9f9f9f",,	// w
 			"#ff0000",,	// R
 			"#00ff00",,	// G
 			"#ffff00",,	// Y

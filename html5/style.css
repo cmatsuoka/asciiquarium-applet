@@ -1,5 +1,21 @@
+screen, row {
+	width: auto;
+	min-width: none;
+	max-width: none;
+	padding: 0;
+	margin: auto;
+}
+
+screen {
+	background-color: black;
+	/* default color */
+	color: white;
+	display: block;
+}
+
 screen row {
 	font-family: monospace;
+	font-style: bold;
 	display: block;
 }
 
