@@ -92,12 +92,15 @@ function Asciiquarium(acolumns, arows) {
 		
 		var buffer = anim.screen.text;
 		var cbuffer = anim.screen.color;
-		var c;
 		for (var row = 0; row < rows; row++) {
 			var r = row * columns;
 			for (var col = 0; col < columns; col++) {
-				c = buffer[r + col];
-				renderer.putChar(col, row, c, cbuffer[r + col]);
+				var c = buffer[r + col];
+				var color = cbuffer[r+ col];
+				//console.debug('will draw:');
+				//console.debug('row: ', row, ' column: ', col);
+				//console.debug('c: ', c, ' color: ', color);
+				renderer.putChar(col, row, c, color);
 			}
 		}
 		renderer.endFrame();

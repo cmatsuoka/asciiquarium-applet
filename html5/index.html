@@ -14,15 +14,38 @@
 		var COLUMNS = 100;
 		var r = new Renderer($('screen'), ROWS, COLUMNS);
 		var a = new Asciiquarium(COLUMNS, ROWS);
+		var running = false;
 		a.setRenderer(r);
+
+		function draw()
+		{
+			a.draw();
+		}
 
 		function tick()
 		{
-			a.draw();
-			window.setTimeout(tick, 160);
+			draw();
+			if (running)
+				window.setTimeout(tick, 160);
 		}
 
-		tick();
+		$('.ticker').click(function (e) {
+			e.preventDefault();
+			draw();
+		});
+
+		$('.starter').click(function (e) {
+			e.preventDefault();
+			running = true;
+			tick();
+		});
+
+		$('.stopper').click(function (e) {
+			e.preventDefault();
+			running = false;
+		});
+
+		//tick();
 	};
 
 	$(document).ready(init);
@@ -30,6 +53,10 @@
 	</script>
 </head>
 <body>
+<a class="ticker" href="#">tick</a>
+<a class="starter" href="#">start</a>
+<a class="stopper" href="#">stop</a>
+
 <screen>
 </screen>
 </body>
