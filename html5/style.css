@@ -1,0 +1,12 @@
+screen row {
+	font-family: monospace;
+	display: block;
+}
+
+screen row char {
+	display: inline;
+	height: 2ex;
+	width: 2em;
+	vertical-align: center;
+	text-align: center;
+}
