@@ -64,7 +64,7 @@ function Animation(columns, rows) {
 		that.list.sort(compareEntities);
 		for (var ie = 0; ie < that.list.length; ie++) {
 			var e = that.list[ie];
-			e.draw(that.screen, e.frame);
+			e.draw2(that.screen, e.frame);
 		}
 	}
 	
