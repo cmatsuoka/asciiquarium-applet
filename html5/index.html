@@ -14,7 +14,7 @@
 		var COLUMNS = 100;
 		var r = new Renderer($('screen'), ROWS, COLUMNS);
 		var a = new Asciiquarium(COLUMNS, ROWS);
-		var running = false;
+		var running = true;
 		a.setRenderer(r);
 
 		function draw()
@@ -45,7 +45,7 @@
 			running = false;
 		});
 
-		//tick();
+		tick();
 	};
 
 	$(document).ready(init);
