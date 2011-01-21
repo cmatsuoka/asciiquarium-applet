@@ -10,8 +10,10 @@
 	<script src="renderer.js" type="text/javascript"></script>
 	<script type="text/javascript"><!--
 	function init() {
-		var r = new Renderer($('screen'), 40, 100);
-		var a = new Asciiquarium(100, 40);
+		var ROWS = 40;
+		var COLUMNS = 100;
+		var r = new Renderer($('screen'), ROWS, COLUMNS);
+		var a = new Asciiquarium(COLUMNS, ROWS);
 		a.setRenderer(r);
 
 		function tick()

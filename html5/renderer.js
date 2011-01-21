@@ -36,7 +36,10 @@ function Renderer(container, rows, columns)
 
 		var e = elements[row][column];
 		e.css('color', colors[n]);
-		e.text(c);
+		if (c == ' ')
+			c = '&nbsp;'
+
+		e.html(c);
 	}
 
 	this.endFrame = function () {
@@ -44,6 +47,7 @@ function Renderer(container, rows, columns)
 
 	var refchar = $('<char>&nbsp;</char>');
 	var refrow = $('<row></row>');
+	var newline = $('<newline></newline>');
 
 	elements = [];
 	for (var r = 0; r < rows; r++) {
@@ -56,5 +60,7 @@ function Renderer(container, rows, columns)
 			elements[r][c] = n;
 			row.append(n);
 		}
+
+		row.append(newline.clone());
 	}
 }

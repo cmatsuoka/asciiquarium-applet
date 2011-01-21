@@ -1,28 +1,27 @@
-screen, row {
-	width: auto;
-	min-width: none;
-	max-width: none;
-	padding: 0;
-	margin: auto;
-}
-
 screen {
-	background-color: black;
 	/* default color */
 	color: white;
-	display: block;
+
+	display: table;
 }
 
 screen row {
+	display: table-row;
 	font-family: monospace;
 	font-style: bold;
-	display: block;
+	margin: 0;
+	padding: 0;
+	background-color: black;
 }
 
 screen row char {
-	display: inline;
-	height: 2ex;
-	width: 2em;
-	vertical-align: center;
-	text-align: center;
+	display: table-cell;
+	display: block;
+	float: left;
+	height: 1.1em;
+	width: 1.1em;
+}
+
+newline {
+	clear: both;
 }

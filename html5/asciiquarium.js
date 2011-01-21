@@ -8,14 +8,6 @@ function randInt(max)
 	return Math.floor(Math.random() * max);
 }
 
-function StringBuffer()
-{
-	var r = "";
-	this.append = function(s) {
-		r += s;
-	}
-}
-
 function Asciiquarium(acolumns, arows) {
 	// Under water
 	var DEPTH_BUBBLE = 1;
@@ -105,8 +97,7 @@ function Asciiquarium(acolumns, arows) {
 			var r = row * columns;
 			for (var col = 0; col < columns; col++) {
 				c = buffer[r + col];
-				if (c != ' ')
-					renderer.putChar(col, row, c, cbuffer[r + col]);
+				renderer.putChar(col, row, c, cbuffer[r + col]);
 			}
 		}
 		renderer.endFrame();
@@ -126,11 +117,11 @@ function Asciiquarium(acolumns, arows) {
 		var segmentRepeat = columns / segmentSize + 1;
 		
 		for (var i = 0; i < waterLineSegment.length; i++) {
-			var s = new StringBuffer();
+			var s = '';
 			for (var j = 0; j < segmentRepeat; j++) {
-				s.append(waterLineSegment[i]); 
+				s += waterLineSegment[i];
 			}
-			waterLineSegment[i] = s.toString();
+			waterLineSegment[i] = s;
 
 			var entity = (new Entity()).init_s("water_seg_" + i,
 					s.toString(), 0, WATER_LEVEL + i, 8 - i * 2);
