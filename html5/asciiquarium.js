@@ -41,6 +41,12 @@ function Asciiquarium(acolumns, arows) {
 	
 	var WATER_LEVEL = 9;
 	
+	var randomDeathCallback = {
+		run: function(entity) {
+			randomObject();
+		}
+	};
+	
 	/* 
 	public abstract interface Renderer {
 		void putChar(int row, int column, char c, char color);
@@ -178,11 +184,17 @@ function Asciiquarium(acolumns, arows) {
 		for (var i = 0; i < seaweedCount; i++)
 			addSeaweed();
 	}
-	
+
 	function addSeaweed() {
 		var seaweedList = [];
 		//var height = randInt(4) + 3;
 		var height = randInt(8) + 3;
+		
+		var seaweedDeathCallback = {
+			run: function(entity) {
+				addSeaweed();
+			}
+		};
 		
 		seaweedList[0] = [];
 		seaweedList[1] = [];
@@ -213,12 +225,6 @@ function Asciiquarium(acolumns, arows) {
 		anim.addEntity(entity);
 	}
 	
-	var seaweedDeathCallback = {
-		run: function(entity) {
-			addSeaweed();
-		}
-	};
-	
 	function addAllFish() {
 		// figure out how many fish to add by the size of the screen
 		// minus the stuff above the water
@@ -246,6 +252,18 @@ function Asciiquarium(acolumns, arows) {
 	}
 		
 	function addBubble(x, y, depth) {
+		var bubbleCollision = {
+			run: function(bubble) {
+				for (var ie = 0; ie < bubble.collisions.length; ie++) {
+					var e = bubble.collisions[ie];
+					if (e.type == ENTITY_TYPE_WATERLINE) {
+						bubble.kill();
+						break;
+					}
+				}
+			}
+		};
+		
 		var shape = [
 			[ "." ], [ "o" ], [ "O" ], [ "O" ], [ "O" ]
 		];
@@ -262,19 +280,35 @@ function Asciiquarium(acolumns, arows) {
 		anim.addEntity(entity);
 	}
 	
-	var bubbleCollision = {
-		run: function(bubble) {
-			for (var ie = 0; ie < bubble.collisions.length; ie++) {
-				var e = bubble.collisions[ie];
-				if (e.type == ENTITY_TYPE_WATERLINE) {
-					bubble.kill();
-					break;
+	function addFish() {
+		var fishCallback = {
+			run: function(entity) {
+				if (randInt(100) > 97)
+					addBubble(entity);
+			
+				entity.move();
+			}
+		};
+		
+		var fishDeathCallback = {
+			run: function(entity) {
+				addFish();
+			}
+		};
+		
+		var fishCollision = {
+			run: function(fish) {
+				for (var ie = 0; ie < fish.collisions.length; ie++) {
+					var e = fish.collisions[ie];
+					if (e.type == ENTITY_TYPE_TEETH) {
+						addSplat(e.fx, e.fy, e.depth);
+						fish.kill();
+						break;
+					}
 				}
 			}
-		}
-	};
+		};
 	
-	function addFish() {
 		var fishImage = [
 			[
 				"       \\",
@@ -516,34 +550,6 @@ function Asciiquarium(acolumns, arows) {
 		anim.addEntity(fishObject);
 	}
 	
-	var fishCallback = {
-		run: function(entity) {
-			if (randInt(100) > 97)
-				addBubble(entity);
-		
-			entity.move();
-		}
-	};
-	
-	var fishDeathCallback = {
-		run: function(entity) {
-			addFish();
-		}
-	};
-	
-	var fishCollision = {
-		run: function(fish) {
-			for (var ie = 0; ie < fish.collisions.length; ie++) {
-				var e = fish.collisions[ie];
-				if (e.type == ENTITY_TYPE_TEETH) {
-					addSplat(e.fx, e.fy, e.depth);
-					fish.kill();
-					break;
-				}
-			}
-		}
-	};
-	
 	function addSplat(fx, fy, depth) {
 		var splatImage = [
 			[
@@ -585,6 +591,18 @@ function Asciiquarium(acolumns, arows) {
 	}
 	
 	function addShark() {
+		// when a shark dies, kill the "teeth" too, the associated
+		// entity that does the actual collision
+		var sharkDeathCallback = {
+			run: function(entity) {
+				var teeth = anim.getEntitiesOfType(ENTITY_TYPE_TEETH);
+				for (var ie = 0; ie < teeth.length; ie++) {
+					anim.delEntity(e);
+				}
+				randomObject();
+			}
+		};
+	
 		var sharkImage = [
 			[
 				"                              __",
@@ -665,18 +683,6 @@ function Asciiquarium(acolumns, arows) {
 		entity.defaultColor = 'C';
 		anim.addEntity(entity);
 	}
-	
-	// when a shark dies, kill the "teeth" too, the associated
-	// entity that does the actual collision
-	var sharkDeathCallback = {
-		run: function(entity) {
-			var teeth = anim.getEntitiesOfType(ENTITY_TYPE_TEETH);
-			for (var ie = 0; ie < teeth.length; ie++) {
-				anim.delEntity(e);
-			}
-			randomObject();
-		}
-	};
 	
 	function addShip() {
         var shipImage = [
@@ -1052,12 +1058,6 @@ function Asciiquarium(acolumns, arows) {
 		
 		anim.addEntity(entity);
 	}
-	
-	var randomDeathCallback = {
-		run: function(entity) {
-			randomObject();
-		}
-	};
 	
 	function randomObject() {
 		switch (randInt(5)) {
