@@ -1,0 +1,19 @@
+{
+  "name": "ASCIIQuarium",
+  "description": "Enjoy the mysteries of the sea from the safety of your browser",
+  "version": "1",
+  "app": {
+    "urls": [
+      "http://helllabs.org/asciiquarium-applet/",
+      "http://www.helllabs.org/asciiquarium-applet/"
+    ],
+    "launch": {
+      "web_url": "http://helllabs.org/asciiquarium-applet/"
+    }
+  },
+  "icons": {
+    "128": "icon128.png"
+  },
+  "permissions": [
+  ]
+}
