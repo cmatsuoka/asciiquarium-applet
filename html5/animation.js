@@ -81,7 +81,7 @@ function Animation(columns, rows) {
 	
 	// Removes an entity from the animation.
 	
-	function delEntity(entity) {
+	this.delEntity = function(entity) {
 		that.deleteQueue.push(entity);
 	}
 	
@@ -143,7 +143,7 @@ function Animation(columns, rows) {
 			if (e.dieFrame > 0) {
 				if (e.frameCount >= e.dieFrame) {
 					//Log.i("Asciiquarium", "Animation: " + e.name + " dies at frame " + e.frame);
-					delEntity(e);
+					that.delEntity(e);
 				}
 			}
 			
@@ -154,7 +154,7 @@ function Animation(columns, rows) {
 				if (e.fx >= that.screen.columns || e.fy >= that.screen.rows ||
 						e.fx < -e.width || e.fy < -e.height) {
 					//Log.i("Asciiquarium", "Animation: " + e.name + " dies offscreen");
-					delEntity(e);
+					that.delEntity(e);
 					continue;
 				}
 			}
