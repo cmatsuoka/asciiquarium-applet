@@ -58,13 +58,18 @@ public class MyApplet extends Applet implements Runnable {
 		g.drawImage(image, 0, 0, this);
 	}
 	
-	void doDraw() {					
-		// clear background
-		graphics.setColor(Color.black);
-        graphics.fillRect(0, 0, width, height);
-		
-		if (blitter != null && asciiquarium != null) {
-			asciiquarium.draw();
+	void doDraw() {	
+		long currentTime = System.currentTimeMillis();
+		long elapsed = currentTime - previousTime;
+		if (elapsed > 150) {
+			// clear background
+			graphics.setColor(Color.black);
+	        graphics.fillRect(0, 0, width, height);
+			
+			if (blitter != null && asciiquarium != null) {
+				asciiquarium.draw();
+			}
+			previousTime = currentTime;
 		}
 	}
 	
