@@ -117,7 +117,7 @@ function Animation(columns, rows) {
 	// Returns a reference to a list of all entities in the animation
 	// that have the given type.
 	
-	function getEntitiesOfType(type) {
+	this.getEntitiesOfType = function(type) {
 		var l = [];
 		for (var ie = 0; ie < that.list.length; ie++) {
 			var e = that.list[ie];

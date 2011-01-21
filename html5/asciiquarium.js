@@ -597,6 +597,7 @@ function Asciiquarium(acolumns, arows) {
 			run: function(entity) {
 				var teeth = anim.getEntitiesOfType(ENTITY_TYPE_TEETH);
 				for (var ie = 0; ie < teeth.length; ie++) {
+					var e = teeth[ie];
 					anim.delEntity(e);
 				}
 				randomObject();
