@@ -182,7 +182,7 @@ public class Asciiquarium {
 	private void addSeaweed() {
 		List<String>[] seaweedList = new ArrayList[2];
 		//int height = random.nextInt(4) + 3;
-		int height = random.nextInt(8) + 3;
+		int height = random.nextInt(4) + 3;
 		
 		seaweedList[0] = new ArrayList<String>();
 		seaweedList[1] = new ArrayList<String>();
