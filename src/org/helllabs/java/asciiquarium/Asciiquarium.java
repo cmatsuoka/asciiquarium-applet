@@ -39,7 +39,7 @@ public class Asciiquarium {
 	int rows;
 	Random random;
 	
-	final static int WATER_LEVEL = 9;
+	final static int WATER_LEVEL = 6;
 	
 	public abstract interface Renderer {
 		void putChar(int row, int column, char c, char color);
