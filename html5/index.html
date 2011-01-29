@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script src="entity.js" type="text/javascript"></script>
+	<script src="animation.js" type="text/javascript"></script>
+	<script src="screen.js" type="text/javascript"></script>
+	<script src="asciiquarium.js" type="text/javascript"></script>
+	<script src="renderer.js" type="text/javascript"></script>
+	<script type="text/javascript"><!--
+	function init() {
+		var ROWS = 40;
+		var COLUMNS = 100;
+		var r = new Renderer($('screen'), ROWS, COLUMNS);
+		var a = new Asciiquarium(COLUMNS, ROWS);
+		var running = true;
+		a.setRenderer(r);
+
+		function draw()
+		{
+			a.draw();
+		}
+
+		function tick()
+		{
+			draw();
+			if (running)
+				window.setTimeout(tick, 160);
+		}
+
+		$('.ticker').click(function (e) {
+			e.preventDefault();
+			draw();
+		});
+
+		$('.starter').click(function (e) {
+			e.preventDefault();
+			running = true;
+			tick();
+		});
+
+		$('.stopper').click(function (e) {
+			e.preventDefault();
+			running = false;
+		});
+
+		tick();
+	};
+
+	$(document).ready(init);
+	// -->
+	</script>
+</head>
+<body>
+<a class="ticker" href="#">tick</a>
+<a class="starter" href="#">start</a>
+<a class="stopper" href="#">stop</a>
+
+<screen>
+</screen>
+</body>

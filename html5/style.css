@@ -1,0 +1,31 @@
+screen {
+	/* default color */
+	color: white;
+	display: block;
+	background-color: black;
+}
+
+screen row {
+	display: block;
+	font-family: monospace;
+	font-style: bold;
+	background-color: black;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+screen row char {
+	display: span;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+newline {
+	display: none;
+	clear: both;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
