@@ -80,7 +80,7 @@ function Entity() {
 		/* STOPPED HERE */
 		for (var is = 0; is < that.shape[0].length; is++) {		// we assume all frames have the same size
 			var s = that.shape[0][is];
-			if (s.length > that.width)
+			if (s.length > vwidth)
 				vwidth = s.length;
 		}
 		that.height = that.shape[0].length;
