@@ -27,6 +27,7 @@ public class Entity implements Comparable<Entity> {
 	Animation animation;
 	char defaultColor = 'w';
 	char transparent = '?';
+	boolean dead = false;
 	
 	abstract interface EntityCallback {
 		public void run(Entity entity);

@@ -92,7 +92,10 @@ public class Animation {
 	// Removes an entity from the animation.
 	
 	void delEntity(Entity entity) {
-		deleteQueue.add(entity);
+		if (!entity.dead) {
+			deleteQueue.add(entity);
+			entity.dead = true;
+		}
 	}
 	
 	// Go through the list of entities that have been queued for
