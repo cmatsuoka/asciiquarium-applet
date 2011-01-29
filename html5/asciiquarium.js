@@ -187,8 +187,7 @@ function Asciiquarium(acolumns, arows) {
 
 	function addSeaweed() {
 		var seaweedList = [];
-		//var height = randInt(4) + 3;
-		var height = randInt(8) + 3;
+		var height = randInt(4) + 3;
 		
 		var seaweedDeathCallback = {
 			run: function(entity) {
