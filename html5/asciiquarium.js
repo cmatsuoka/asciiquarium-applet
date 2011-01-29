@@ -39,7 +39,7 @@ function Asciiquarium(acolumns, arows) {
 	var columns;
 	var rows;
 	
-	var WATER_LEVEL = 9;
+	var WATER_LEVEL = 5;
 	
 	var randomDeathCallback = {
 		run: function(entity) {
