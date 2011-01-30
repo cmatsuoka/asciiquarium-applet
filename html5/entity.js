@@ -197,10 +197,6 @@ function Entity() {
 	that.compareTo = function(e) {
 		return that.depth < e.depth ? 1 : that.depth > e.depth ? -1 : 0;
 	}
-
-	that.equals = function (e) {
-		return that.compareTo(e) == 0;
-	}
 }
 
 /* vim: ts=4 sw=4

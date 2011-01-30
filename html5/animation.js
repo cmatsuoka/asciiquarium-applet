@@ -22,7 +22,7 @@ function Animation(columns, rows) {
 				var f = that.list[iif];
 				if (!f.physical)
 					continue;
-				if (e.equals(f))
+				if (e == f)
 					continue;
 				if ((e.fx < f.fx && e.fx + e.width <= f.fx) || e.fx >= f.fx + f.width)
 					continue;
