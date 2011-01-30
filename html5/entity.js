@@ -1,6 +1,6 @@
 function compareEntities(a, b)
 {
-	return a.compareTo(b);
+	return a.depth < b.depth ? 1 : a.depth > b.depth ? -1 : 0;
 }
 
 function Entity() {
@@ -190,12 +190,6 @@ function Entity() {
 	
 	that.kill = function () {
 		that.animation.delEntity(that);
-	}
-	
-	// Comparable
-	
-	that.compareTo = function(e) {
-		return that.depth < e.depth ? 1 : that.depth > e.depth ? -1 : 0;
 	}
 }
 
