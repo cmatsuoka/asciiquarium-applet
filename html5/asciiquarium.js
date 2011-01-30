@@ -1083,6 +1083,7 @@ function Asciiquarium(acolumns, arows) {
 			for (var j = 0; j < keys.length; j++) {
 				var re = new RegExp(keys[j],"g");
 				mask[i] = mask[i].replace(re, newColors[j]);
+				delete re;
 			}
 		}
 	}

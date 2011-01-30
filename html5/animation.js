@@ -106,6 +106,7 @@ function Animation(columns, rows) {
 			for (var id = 0; id < that.list.length; id++) {
 				if (that.list[id] == e) {
 					that.list.splice(id, 1);
+					delete e;
 					break;
 				}
 			}
