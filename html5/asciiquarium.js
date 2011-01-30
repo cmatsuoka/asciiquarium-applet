@@ -1074,14 +1074,15 @@ function Asciiquarium(acolumns, arows) {
 		var keys = [ '1', '2', '3', '5', '6', '7' ];
 		
 		var newColors = [];
-		for (var i = 0; i < newColors.length; i++)
+		for (var i = 0; i < keys.length; i++)
 			newColors[i] = colors[randInt(colors.length)];
 		
 		// Set eye white, rest as random color
 		for (var i = 0; i < mask.length; i++) {
-			mask[i] = mask[i].replace('4', 'W');
+			mask[i] = mask[i].replace(/4/g, 'W');
 			for (var j = 0; j < keys.length; j++) {
-				mask[i] = mask[i].replace(keys[j], newColors[j]);
+				var re = new RegExp(keys[j],"g");
+				mask[i] = mask[i].replace(re, newColors[j]);
 			}
 		}
 	}
