@@ -103,7 +103,7 @@ public class Animation {
 	
 	private void removeDeletedEntities() {
 		// copy list so we can modify it
-		Entity[] delList = deleteQueue.toArray(new Entity[0]);
+		final Entity[] delList = deleteQueue.toArray(new Entity[0]);
 		
 		for (Entity e : delList) {
 			if (e.deathCallback != null) {
@@ -115,9 +115,8 @@ public class Animation {
 				physicalCount--;
 
 			list.remove(e);
+			deleteQueue.remove(e);
 		}
-		
-		deleteQueue.clear();
 	}
 	
 	// Returns a reference to a list of all entities in the animation
