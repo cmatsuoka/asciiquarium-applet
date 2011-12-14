@@ -126,7 +126,7 @@ public class Asciiquarium {
 			}
 			waterLineSegment[i] = s.toString();
 
-			Entity entity = new Entity("water_seg_" + i,
+			final Entity entity = new Entity("water_seg_" + i,
 					s.toString(), 0, WATER_LEVEL + i, 8 - i * 2);
 			entity.type = ENTITY_TYPE_WATERLINE;
 			entity.defaultColor = 'c';
@@ -180,9 +180,9 @@ public class Asciiquarium {
 	}
 	
 	private void addSeaweed() {
-		List<String>[] seaweedList = new ArrayList[2];
+		final List<String>[] seaweedList = new ArrayList[2];
 		//int height = random.nextInt(4) + 3;
-		int height = random.nextInt(4) + 3;
+		final int height = random.nextInt(4) + 3;
 		
 		seaweedList[0] = new ArrayList<String>();
 		seaweedList[1] = new ArrayList<String>();
@@ -202,7 +202,7 @@ public class Asciiquarium {
 		final int y = rows - height;
 		final float animSpeed = random.nextFloat() * 0.5F + 0.25F;
 		
-		Entity entity = new Entity("seaweed", seaweedImage, x, y, DEPTH_SEAWEED);
+		final Entity entity = new Entity("seaweed", seaweedImage, x, y, DEPTH_SEAWEED);
 		
 		// seaweed lives for 8 to 12 minutes
 		entity.dieTime = System.currentTimeMillis() / 1000L + random.nextInt(4 * 60) + 8 * 60;
@@ -250,7 +250,7 @@ public class Asciiquarium {
 			{ "." }, { "o" }, { "O" }, { "O" }, { "O" }
 		};
 
-		Entity entity = new Entity("bubble", shape,	x, y, depth);
+		final Entity entity = new Entity("bubble", shape,	x, y, depth);
 		entity.type = ENTITY_TYPE_BUBBLE;
 		entity.callbackArguments[1] = -1.0F;
 		entity.callbackArguments[3] = 0.1F;
@@ -492,7 +492,7 @@ public class Asciiquarium {
 		if (fishNum % 2 != 0)
 			speed *= -1;
 		
-		Entity fishObject = new Entity("fish", fishImage[fishIndex], colorMask, 0, 0, depth);
+		final Entity fishObject = new Entity("fish", fishImage[fishIndex], colorMask, 0, 0, depth);
 		fishObject.type = ENTITY_TYPE_FISH;
 		fishObject.callback = fishCallback;
 		fishObject.autoTrans = true;
@@ -574,7 +574,7 @@ public class Asciiquarium {
 			}
 		};
 
-		Entity entity = new Entity("splat", splatImage, (int)fx - 4, (int)fy - 2, depth - 2);
+		final Entity entity = new Entity("splat", splatImage, (int)fx - 4, (int)fy - 2, depth - 2);
 		entity.defaultColor = 'R';
 		entity.callbackArguments[3] = 0.25F;
 		entity.transparent = ' ';
@@ -649,13 +649,13 @@ public class Asciiquarium {
 			teethX = x + 9;
 		}
 		
-		Entity teeth = new Entity("teeth", "*", teethX, teethY, DEPTH_SHARK + 1);
+		final Entity teeth = new Entity("teeth", "*", teethX, teethY, DEPTH_SHARK + 1);
 		teeth.type = ENTITY_TYPE_TEETH;
 		teeth.callbackArguments[0] = speed;
 		teeth.physical = true;
 		anim.addEntity(teeth);
 		
-		Entity entity = new Entity("shark", sharkImage[dir], sharkMask[dir],
+		final Entity entity = new Entity("shark", sharkImage[dir], sharkMask[dir],
 					x, y, DEPTH_SHARK);
 		entity.callbackArguments[0] = speed;
 		entity.dieOffscreen = true;
@@ -722,7 +722,7 @@ public class Asciiquarium {
         	x = columns - 2;
         }
         
-        Entity entity = new Entity("ship", shipImage[dir], shipMask[dir],
+        final Entity entity = new Entity("ship", shipImage[dir], shipMask[dir],
         			x, WATER_LEVEL - 5, DEPTH_WATER_GAP1);
         entity.callbackArguments[0] = speed;
         entity.dieOffscreen = true;
@@ -839,7 +839,7 @@ public class Asciiquarium {
 				whaleAnim[5 + i][3 + j] = whaleImage[dir][j];
 		}
 		
-		Entity entity = new Entity("whale", whaleAnim, whaleMask[dir],
+		final Entity entity = new Entity("whale", whaleAnim, whaleMask[dir],
 					x, WATER_LEVEL - 5, DEPTH_WATER_GAP2);
 		entity.callbackArguments[0] = speed;
 		entity.callbackArguments[3] = 1.0F;
@@ -944,7 +944,7 @@ public class Asciiquarium {
 		for (int i = 0; i < 4; i++)
 			monsterAnimMask[i] = monsterMask[dir];
 		
-		Entity entity = new Entity("monster", monsterImage[dir], monsterAnimMask,
+		final Entity entity = new Entity("monster", monsterImage[dir], monsterAnimMask,
 							x, WATER_LEVEL - 3, DEPTH_WATER_GAP2);
 		entity.callbackArguments[0] = speed;
 		entity.callbackArguments[3] = 0.25F;
@@ -962,15 +962,15 @@ public class Asciiquarium {
         		"`\"\"-.  `````-----.....__",
         		"     `.  .      .       `-.",
         		"       :     .     .       `.",
-        		" ,     :   .    .          _ :",
-        		": `.   :                  (@) `._",
+        		" ,?????:   .    .          _ :",
+        		": `.???:                  (@) `._",
         		" `. `..'     .     =`-.       .__)",
         		"   ;     .        =  ~  :     .-",
         		" .' .'`.   .    .  =.-'  `._ .'",
-        		": .'   :               .   .'",
-        		" '   .'  .    .     .   .-'",
+        		": .'???:               .   .'",
+        		" '???.'  .    .     .   .-'",
         		"   .'____....----''.'=.'",
-        		"   \"\"             .'.'",
+        		"   \"\"?????????????.'.'",
         		"               ''\"'`"
         	},
         	{
@@ -978,15 +978,15 @@ public class Asciiquarium {
         		"          __.....-----'''''  .-\"\"'",
         		"       .-'       .      .  .'",
         		"     .'       .     .     :",
-        		"    : _          .    .   :     ,",
-        		" _.' (@)                  :   .' :",
+        		"    : _          .    .   :?????,",
+        		" _.' (@)                  :???.' :",
         		"(__.       .-'=     .     `..' .'",
         		" \"-.     :  ~  =        .     ;",
         		"   `. _.'  `-.=  .    .   .'`. `.",
-        		"     `.   .               :   `. :",
-        		"       `-.   .     .    .  `.   `",
+        		"     `.   .               :???`. :",
+        		"       `-.   .     .    .  `.???`",
         		"          `.=`.``----....____`.",
-        		"            `.`.             \"\"",
+        		"            `.`.?????????????\"\"",
         		"              '`\"``"
         	}
         };
@@ -1040,7 +1040,7 @@ public class Asciiquarium {
 		int y = random.nextInt(minHeight - maxHeight) + maxHeight;
 		randColor(bigFishMask[dir]);
 		
-		Entity entity = new Entity("big_fish", bigFishImage[dir],
+		final Entity entity = new Entity("big_fish", bigFishImage[dir],
 					bigFishMask[dir], x, y, DEPTH_SHARK);
 		entity.callbackArguments[0] = speed;
 		entity.dieOffscreen = true;
